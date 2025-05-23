@@ -667,7 +667,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 LexConnect. Todos los derechos reservados.</p>
-            <p>Desarrollado con ❤️ por Óscar Sierra.</p>
+            <p>Desarrollado ❤️ por Óscar Sierra.</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/oscar_sierra_2921/" target="_blank" aria-label="Instagram de Óscar Sierra">
                     <i class="fab fa-instagram"></i>
@@ -751,7 +751,7 @@
         }
 
         function addInitialBotMessage(save = true) {
-            const initialBotMessage = '¡Hola! Soy LexConnect, tu asistente de IA. Estoy aquí para responder tus preguntas sobre cualquier tema. ¿En qué puedo ayudarte hoy?';
+            const initialBotMessage = '¡Hola! Soy LexConnect, tu asistente personal. Estoy aquí para responder tus preguntas sobre cualquier tema. ¿En qué puedo ayudarte hoy?😎🤗';
             displayMessage('bot', initialBotMessage, save); // Guardar el mensaje inicial en la conversación actual
         }
 
@@ -798,7 +798,7 @@
             }
         }
 
-        const lexConnectKeywords = ['lexconnect', 'tu desarrollador', 'tu creador', 'óscar sierra', 'quién te creó', 'quién te hizo', 'eres lexconnect', 'qué eres tú', 'quien te creo', 'quien te desarrollo', 'quien creo lexconnect', 'quien creo la ia'];
+        const lexConnectKeywords = ['lexconnect', 'quien lo hizo','quien lo creo', 'como lo crearon', 'quien te desarrolló', 'quien te desarrolló', 'quien te programó', 'quien te programo', 'tu desarrollador', 'tu creador', 'óscar sierra', 'quién te creó', 'quién te hizo', 'eres lexconnect', 'qué eres tú', 'quien te creo', 'quien te desarrollo', 'quien creo lexconnect', 'quien creo la ia'];
 
         function isAboutLexConnect(question) {
             const lowerCaseQuestion = question.toLowerCase();
@@ -814,16 +814,109 @@
 
             // Respuesta especial para preguntas sobre LexConnect o su creador
             if (isAboutLexConnect(userMessage)) {
-                const specificResponse = `Fui creado por **LexConnect**, fui fundado por **Óscar Sierra**, un administrador público y estudiante de derecho en Colombia. Él me concibió para ser una herramienta útil y accesible, bajo los estándares de aprendizaje de Google.`;
+                const specificResponse = `Fui creado por **LexConnect**, chat de IA fundado por **Óscar Sierra**, un administrador público y estudiante de derecho en Colombia. Él me concibió para ser una herramienta útil y accesible, bajo los estándares de aprendizaje de Google.`;
                 displayMessage('bot', specificResponse);
                 return;
             }
 
             showTypingIndicator(); // Mostrar el indicador de "escribiendo"
+        
+<html>
+<head>
+<title>Indicador de Escritura</title>
+<style>
+  body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  #typing-indicator {
+    display: none; /* Initially hidden, controlled by JavaScript */
+    align-items: center;
+    justify-content: center;
+    height: 20px; /* Adjust height if needed */
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #555; /* Color of the dots */
+    border-radius: 50%;
+    margin: 0 4px; /* Space between dots */
+    animation: bounce 0.8s infinite alternate; /* Apply the animation */
+  }
+
+  /* Stagger the animation delay for each dot to create the "bouncing" effect */
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes bounce {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-8px); /* How high the dots bounce */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="typing-indicator">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<script>
+  /**
+   * Displays the typing indicator animation.
+   * Sets the display style to 'flex' to make it visible.
+   */
+  function showTypingIndicator() {
+    const typingIndicator = document.getElementById('typing-indicator');
+    if (typingIndicator) {
+      typingIndicator.style.display = 'flex';
+    }
+  }
+
+  /**
+   * Hides the typing indicator animation.
+   * Sets the display style to 'none' to make it invisible.
+   */
+  function hideTypingIndicator() {
+    const typingIndicator = document.getElementById('typing-indicator');
+    if (typingIndicator) {
+      typingIndicator.style.display = 'none';
+    }
+  }
+
+  // --- Example Usage ---
+  // In a real application, you would call showTypingIndicator()
+  // when a user is typing, or a bot is "thinking,"
+  // and hideTypingIndicator() when the message is sent or the response is ready.
+
+  // For demonstration, let's show the indicator after 2 seconds
+  // and then hide it after another 3 seconds (5 seconds total).
+  setTimeout(showTypingIndicator, 2000); // Show after 2 seconds
+
+  setTimeout(hideTypingIndicator, 5000); // Hide after 5 seconds (2s initial delay + 3s visible time)
+
+
 
             try {
                 // Aquí, el prompt es más general, sin la restricción de "Derecho Colombiano"
-                const prompt = `Responde la siguiente pregunta de forma clara y concisa. Organiza tu respuesta con títulos (### Título) y subtítulos (**Subtítulo**) para facilitar la lectura. El interlineado debe ser el debido. No uses viñetas ni numeraciones a menos que sea estrictamente necesario para la claridad de la información. El texto debe estar alineado a la izquierda. La pregunta es: "${userMessage}"`;
+                const prompt = `Responde la siguiente pregunta de forma clara y concisa, si puedes busca en internet. Organiza tu respuesta con títulos (### Título) y subtítulos (**Subtítulo**) para facilitar la lectura. El interlineado debe ser el debido. No uses viñetas ni numeraciones a menos que sea estrictamente necesario para la claridad de la información. El texto debe estar alineado a la izquierda. La pregunta es: "${userMessage}"`;
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
