@@ -666,7 +666,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 LexConnect. Todos los derechos reservados.</p>
+            <p>&copy; 2025 LexConnect. Todos los derechos reservados.</p>
             <p>Desarrollado ❤️ por Óscar Sierra.</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/oscar_sierra_2921/" target="_blank" aria-label="Instagram de Óscar Sierra">
@@ -751,7 +751,7 @@
         }
 
         function addInitialBotMessage(save = true) {
-            const initialBotMessage = '¡Hola! Soy LexConnect, tu asistente personal. Estoy aquí para responder tus preguntas sobre cualquier tema. ¿En qué puedo ayudarte hoy?😎🤗';
+            const initialBotMessage = '¡Hola! Soy Lexi, tu asistente personal de lexconnect. Estoy aquí para responder tus preguntas sobre cualquier tema. ¿En qué puedo ayudarte hoy?😎🤗';
             displayMessage('bot', initialBotMessage, save); // Guardar el mensaje inicial en la conversación actual
         }
 
@@ -823,7 +823,7 @@
         
             try {
                 // Aquí, el prompt es más general, sin la restricción de "Derecho Colombiano"
-                const prompt = `Responde la siguiente pregunta de forma clara y concisa, busca en internet. Organiza tu respuesta con títulos (### Título) y subtítulos (**Subtítulo**) para facilitar la lectura. El interlineado debe ser el debido. No uses viñetas ni numeraciones a menos que sea estrictamente necesario para la claridad de la información. El texto debe estar alineado a la izquierda. La pregunta es: "${userMessage}"`;
+                const prompt = `Responde la siguiente pregunta de forma clara y concisa o amplia si es el caso, tambien busca en internet. Organiza tu respuesta con títulos (### Título) y subtítulos (**Subtítulo**) para facilitar la lectura. El interlineado debe ser el debido. No uses viñetas ni numeraciones a menos que sea estrictamente necesario para la claridad de la información. El texto debe estar alineado a la izquierda. La pregunta es: "${userMessage}"`;
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
